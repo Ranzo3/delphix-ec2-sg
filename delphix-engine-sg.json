@@ -1,0 +1,236 @@
+[
+                {
+                    "FromPort": 80,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "MY_IP"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 80,
+                    "UserIdGroupPairs": []
+                },
+                {
+                    "FromPort": 33434,
+                    "IpProtocol": "udp",
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 33464,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "",
+                            "GroupId": "DELPHIX_TARGET_SG_ID",
+                            "UserId": "USER_ID"
+                        },
+                        {
+                            "Description": "",
+                            "GroupId": "DELPHIX_SOURCE_SG_ID",
+                            "UserId": "USER_ID"
+                        }
+                    ]
+                },
+                {
+                    "FromPort": 32768,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 65535,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "",
+                            "GroupId": "DELPHIX_TARGET_SG_ID",
+                            "UserId": "USER_ID"
+                        }
+                    ]
+                },
+                {
+                    "FromPort": 8415,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 8415,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "",
+                            "GroupId": "DELPHIX_TARGET_SG_ID",
+                            "UserId": "USER_ID"
+                        },
+                        {
+                            "Description": "",
+                            "GroupId": "DELPHIX_SOURCE_SG_ID",
+                            "UserId": "USER_ID"
+                        }
+                    ]
+                },
+                {
+                    "FromPort": 8341,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 8341,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "",
+                            "GroupId": "DELPHIX_SOURCE_SG_ID",
+                            "UserId": "USER_ID"
+                        }
+                    ]
+                },
+                {
+                    "FromPort": 4045,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 4045,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "",
+                            "GroupId": "DELPHIX_TARGET_SG_ID",
+                            "UserId": "USER_ID"
+                        }
+                    ]
+                },
+                {
+                    "FromPort": 32768,
+                    "IpProtocol": "udp",
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 65535,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "",
+                            "GroupId": "DELPHIX_TARGET_SG_ID",
+                            "UserId": "USER_ID"
+                        }
+                    ]
+                },
+                {
+                    "FromPort": 50001,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 50001,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "",
+                            "GroupId": "DELPHIX_TARGET_SG_ID",
+                            "UserId": "USER_ID"
+                        },
+                        {
+                            "Description": "",
+                            "GroupId": "DELPHIX_SOURCE_SG_ID",
+                            "UserId": "USER_ID"
+                        }
+                    ]
+                },
+                {
+                    "FromPort": 443,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "MY_IP"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 443,
+                    "UserIdGroupPairs": []
+                },
+                {
+                    "FromPort": 2049,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 2049,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "",
+                            "GroupId": "DELPHIX_TARGET_SG_ID",
+                            "UserId": "USER_ID"
+                        }
+                    ]
+                },
+                {
+                    "FromPort": 1110,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 1110,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "",
+                            "GroupId": "DELPHIX_TARGET_SG_ID",
+                            "UserId": "USER_ID"
+                        }
+                    ]
+                },
+                {
+                    "FromPort": 22,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "MY_IP"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 22,
+                    "UserIdGroupPairs": []
+                },
+                {
+                    "FromPort": 2049,
+                    "IpProtocol": "udp",
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 2049,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "",
+                            "GroupId": "DELPHIX_TARGET_SG_ID",
+                            "UserId": "USER_ID"
+                        }
+                    ]
+                },
+                {
+                    "FromPort": 111,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 111,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "",
+                            "GroupId": "DELPHIX_TARGET_SG_ID",
+                            "UserId": "USER_ID"
+                        }
+                    ]
+                },
+                {
+                    "FromPort": 111,
+                    "IpProtocol": "udp",
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 111,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "",
+                            "GroupId": "DELPHIX_TARGET_SG_ID",
+                            "UserId": "USER_ID"
+                        }
+                    ]
+                }
+]

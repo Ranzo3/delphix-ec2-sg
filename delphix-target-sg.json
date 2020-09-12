@@ -1,0 +1,52 @@
+[
+                {
+                    "FromPort": 50001,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 50001,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "",
+                            "GroupId": "DELPHIX_ENGINE_SG_ID",
+                            "UserId": "USER_ID"
+                        }
+                    ]
+                },
+                {
+                    "FromPort": 1521,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 1521,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "",
+                            "GroupId": "DELPHIX_ENGINE_SG_ID",
+                            "UserId": "USER_ID"
+                        }
+                    ]
+                },
+                {
+                    "FromPort": 22,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "MY_IP"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 22,
+                    "UserIdGroupPairs": [
+                        {
+                            "Description": "",
+                            "GroupId": "DELPHIX_ENGINE_SG_ID",
+                            "UserId": "USER_ID"
+                        }
+
+                    ]
+                }
+]
