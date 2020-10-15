@@ -5,13 +5,13 @@
 
 #AWS_CMD="docker run --rm -it -v ${HOME}/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli"   #Doens't work, due to extra characters in the output
 AWS_CMD=aws
-DELPHIX_ENGINE_SG_NAME=ranzo2-delphix-engine
+DELPHIX_ENGINE_SG_NAME=delphix-engine-sg
 DELPHIX_ENGINE_SG_DESC="Delphix Engine SG"
-DELPHIX_TARGET_SG_NAME=ranzo2-delphix-target
+DELPHIX_TARGET_SG_NAME=delphix-target-sg
 DELPHIX_TARGET_SG_DESC="Delphix Target SG"
-DELPHIX_SOURCE_SG_NAME=ranzo2-delphix-source
+DELPHIX_SOURCE_SG_NAME=delphix-source-sg
 DELPHIX_SOURCE_SG_DESC="Delphix Source SG"
-VPC_ID=vpc-4f91ef36            
+VPC_ID=vpc-0df13675
 #MY_IP=123.123.123.123/24      #Your company probably uses a range here, but if you comment it out we'll use "checkip.amazon.com and append /32"
 
 
