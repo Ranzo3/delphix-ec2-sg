@@ -58,14 +58,23 @@ ${AWS_CMD} ec2 delete-security-group --group-id ${DELPHIX_SOURCE_SG_ID}
 
 create_sgs() {
 RESULT=`${AWS_CMD} ec2 create-security-group --group-name ${DELPHIX_ENGINE_SG_NAME} --description "${DELPHIX_ENGINE_SG_DESC}" --vpc-id ${VPC_ID} --output json`
+if [ $? -ne 0 ]; then
+  exit 1
+fi
 DELPHIX_ENGINE_SG_ID=`echo $RESULT | jq --raw-output '.GroupId'`
 echo "DELPHIX_ENGINE_SG_ID: ${DELPHIX_ENGINE_SG_ID}"
 
 RESULT=`${AWS_CMD} ec2 create-security-group --group-name ${DELPHIX_TARGET_SG_NAME} --description "${DELPHIX_TARGET_SG_DESC}" --vpc-id ${VPC_ID} --output json`
+if [ $? -ne 0 ]; then
+  exit 1
+fi
 DELPHIX_TARGET_SG_ID=`echo $RESULT | jq --raw-output '.GroupId'`
 echo "DELPHIX_TARGET_SG_ID: ${DELPHIX_TARGET_SG_ID}"
 
 RESULT=`${AWS_CMD} ec2 create-security-group --group-name ${DELPHIX_SOURCE_SG_NAME} --description "${DELPHIX_SOURCE_SG_DESC}" --vpc-id ${VPC_ID} --output json`
+if [ $? -ne 0 ]; then
+  exit 1
+fi
 DELPHIX_SOURCE_SG_ID=`echo $RESULT | jq --raw-output '.GroupId'`
 echo "DELPHIX_SOURCE_SG_ID: ${DELPHIX_SOURCE_SG_ID}"
 }
@@ -83,7 +92,7 @@ DELPHIX_SOURCE_SG_OWNER_ID=${DELPHIX_ENGINE_SG_OWNER_ID}
 if [ ${MY_IP}x = 'x' ]; then
   MY_IP=`curl -s https://checkip.amazonaws.com`/32
 fi
-echo $MY_IP
+echo "MY_IP: ${MY_IP}"
 
 #It's strangely difficult to pass in JSON to these commands.  Sorry for the weird workaround with temp files.
 TMPFILE=`mktemp`
@@ -169,17 +178,17 @@ while getopts "rd" OPTION; do
 done
 
 #Define Invalid Parameter Combinations
-if [ ${REPLACE_INBOUND_RULES} = "true" ] && [ ${DELETE_SGS} = "true" ]; then
+if [ "${REPLACE_INBOUND_RULES}" = "true" ] && [ "${DELETE_SGS}" = "true" ]; then
    echo "It's an invalid combination to use -r and -d together."
    exit_abnormal
 fi
 
-if [ ${REPLACE_INBOUND_RULES} = "true" ]; then
+if [ "${REPLACE_INBOUND_RULES}" = "true" ]; then
   delete_inbound_rules
   create_inbound_rules
   exit 0
 fi
-if [ ${DELETE_SGS} = "true" ] ; then
+if [ "${DELETE_SGS}" = "true" ] ; then
   delete_inbound_rules
   delete_sgs
   exit 0
