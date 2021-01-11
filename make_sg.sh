@@ -57,15 +57,15 @@ ${AWS_CMD} ec2 delete-security-group --group-id ${DELPHIX_SOURCE_SG_ID}
 
 
 create_sgs() {
-RESULT=`${AWS_CMD} ec2 create-security-group --group-name ${DELPHIX_ENGINE_SG_NAME} --description "{DELPHIX_ENGINE_SG_DESC}" --vpc-id ${VPC_ID} --output json`
+RESULT=`${AWS_CMD} ec2 create-security-group --group-name ${DELPHIX_ENGINE_SG_NAME} --description "${DELPHIX_ENGINE_SG_DESC}" --vpc-id ${VPC_ID} --output json`
 DELPHIX_ENGINE_SG_ID=`echo $RESULT | jq --raw-output '.GroupId'`
 echo "DELPHIX_ENGINE_SG_ID: ${DELPHIX_ENGINE_SG_ID}"
 
-RESULT=`${AWS_CMD} ec2 create-security-group --group-name ${DELPHIX_TARGET_SG_NAME} --description "{DELPHIX_TARGET_SG_DESC}" --vpc-id ${VPC_ID} --output json`
+RESULT=`${AWS_CMD} ec2 create-security-group --group-name ${DELPHIX_TARGET_SG_NAME} --description "${DELPHIX_TARGET_SG_DESC}" --vpc-id ${VPC_ID} --output json`
 DELPHIX_TARGET_SG_ID=`echo $RESULT | jq --raw-output '.GroupId'`
 echo "DELPHIX_TARGET_SG_ID: ${DELPHIX_TARGET_SG_ID}"
 
-RESULT=`${AWS_CMD} ec2 create-security-group --group-name ${DELPHIX_SOURCE_SG_NAME} --description "{DELPHIX_SOURCE_SG_DESC}" --vpc-id ${VPC_ID} --output json`
+RESULT=`${AWS_CMD} ec2 create-security-group --group-name ${DELPHIX_SOURCE_SG_NAME} --description "${DELPHIX_SOURCE_SG_DESC}" --vpc-id ${VPC_ID} --output json`
 DELPHIX_SOURCE_SG_ID=`echo $RESULT | jq --raw-output '.GroupId'`
 echo "DELPHIX_SOURCE_SG_ID: ${DELPHIX_SOURCE_SG_ID}"
 }
@@ -139,6 +139,7 @@ usage() {
   echo "-r : Just Replace the Inbound Rules.  Useful if you change the rules and have already attached SGs to Instances"
   echo
   echo "-d : Just Delete the Security Groups. Useful if you want to start over"
+  exit 1
 }
 
 exit_abnormal() {
@@ -150,7 +151,7 @@ exit_abnormal() {
 
 
 
-REPLACE_INBOUND_RULES=false
+REPLAE_INBOUND_RULES=false
 DELETE_SGS=false
 
 while getopts "rd" OPTION; do
@@ -160,6 +161,9 @@ while getopts "rd" OPTION; do
         ;;
     d)
         DELETE_SGS=true
+        ;;
+    h|*)  
+        usage
         ;;
     esac
 done

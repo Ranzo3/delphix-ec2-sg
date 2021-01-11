@@ -11,5 +11,15 @@
     (Optional and not recommended) customize the names of the security groups.
     (Optional)  Modify AWS_CMD to include options like ` --profile <string>` and ` --region <string>`
 3)  Run make_sg.sh
+
+## Usage
+
+Usage: ./make_sg.sh [ -r ] [ -d ] 
+
+With no flags, this script will create the SGs and the Ingress Rules.
+
+-r : Just Replace the Inbound Rules.  Useful if you change the rules and have already attached SGs to Instances
+
+-d : Just Delete the Security Groups. Useful if you want to start over
     
    
