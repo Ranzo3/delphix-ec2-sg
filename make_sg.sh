@@ -18,6 +18,10 @@ VPC_ID=vpc-0df13675
 
 delete_inbound_rules() {
 DELPHIX_ENGINE_SG_ID=`${AWS_CMD} ec2 describe-security-groups --filters Name=group-name,Values=${DELPHIX_ENGINE_SG_NAME} --query "SecurityGroups[*].[GroupId]" --output text`
+if [ "${DELPHIX_ENGINE_SG_ID}" = "" ]; then
+  echo "Could not find an SG Named ${DELPHIX_ENGINE_SG_NAME} to delete"
+  exit 1
+fi
 TMPFILE=`mktemp`
 chmod u+x $TMPFILE
 echo "${AWS_CMD} ec2 revoke-security-group-ingress --group-id ${DELPHIX_ENGINE_SG_ID} --ip-permissions '" > $TMPFILE
@@ -28,6 +32,10 @@ $TMPFILE
 rm $TMPFILE
 
 DELPHIX_TARGET_SG_ID=`${AWS_CMD} ec2 describe-security-groups --filters Name=group-name,Values=${DELPHIX_TARGET_SG_NAME} --query "SecurityGroups[*].[GroupId]" --output text`
+if [ "${DELPHIX_TARGET_SG_ID}" = "" ]; then
+  echo "Could not find an SG Named ${DELPHIX_TARGET_SG_NAME} to delete"
+  exit 1
+fi
 TMPFILE=`mktemp`
 chmod u+x $TMPFILE
 echo "${AWS_CMD} ec2 revoke-security-group-ingress --group-id ${DELPHIX_TARGET_SG_ID} --ip-permissions '" > $TMPFILE
@@ -38,6 +46,10 @@ $TMPFILE
 rm $TMPFILE
 
 DELPHIX_SOURCE_SG_ID=`${AWS_CMD} ec2 describe-security-groups --filters Name=group-name,Values=${DELPHIX_SOURCE_SG_NAME} --query "SecurityGroups[*].[GroupId]" --output text`
+if [ "${DELPHIX_SOURCE_SG_ID}" = "" ]; then
+  echo "Could not find an SG Named ${DELPHIX_SOURCE_SG_NAME} to delete"
+  exit 1
+fi
 TMPFILE=`mktemp`
 chmod u+x $TMPFILE
 echo "${AWS_CMD} ec2 revoke-security-group-ingress --group-id ${DELPHIX_SOURCE_SG_ID} --ip-permissions '" > $TMPFILE
